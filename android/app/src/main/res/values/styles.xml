@@ -1,0 +1,10 @@
+<resources>
+    <style name="AppTheme" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#F7F5EE</item>
+        <item name="android:navigationBarColor">#F7F5EE</item>
+    </style>
+    <string name="record_shortcut">说一句</string>
+    <string name="text_shortcut">写一笔</string>
+</resources>

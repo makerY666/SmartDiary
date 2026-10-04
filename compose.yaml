@@ -1,0 +1,46 @@
+services:
+  database:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: smartdiary
+      POSTGRES_USER: diary
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U diary -d smartdiary"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  migrate:
+    build: ./backend
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://diary:${POSTGRES_PASSWORD}@database:5432/smartdiary
+    command: ["alembic", "upgrade", "head"]
+    depends_on:
+      database: {condition: service_healthy}
+  api:
+    build: ./backend
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://diary:${POSTGRES_PASSWORD}@database:5432/smartdiary
+    ports: ["127.0.0.1:8000:8000"]
+    volumes: ["media:/app/.data"]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    restart: unless-stopped
+  worker:
+    build: ./backend
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://diary:${POSTGRES_PASSWORD}@database:5432/smartdiary
+    command: ["python", "-m", "smartdiary.worker"]
+    volumes: ["media:/app/.data"]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    restart: unless-stopped
+volumes:
+  postgres:
+  media:

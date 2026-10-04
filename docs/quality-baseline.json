@@ -1,0 +1,315 @@
+{
+  "dataset": "合成测试记录，不是用户真实日记；用于回归与模型基线，不能代表长期用户验收",
+  "provider": "deepseek-flash",
+  "cases": 30,
+  "days": 14,
+  "retrieval_top5_rate": 1.0,
+  "expected_detail_rate": 1.0,
+  "citations_valid_rate": 1.0,
+  "diary_source_coverage_rate": 1.0,
+  "companion_citations_valid": true,
+  "cost": {
+    "month": "2026-10",
+    "spent_yuan": 0.0352,
+    "reserved_yuan": 0.0,
+    "fixed_yuan": 80.0,
+    "projected_yuan": 80.0352,
+    "limit_yuan": 300.0,
+    "warning": false,
+    "ai_enabled": true,
+    "ai_mode": "deepseek"
+  },
+  "negative_cases": [
+    {
+      "question": "我银行卡的密码是多少？",
+      "no_unsupported_answer": true,
+      "sources": 0,
+      "answer": "没有找到足够的记录依据。可以补充人物、时间或事情中的一个具体线索。"
+    },
+    {
+      "question": "去年去过的冰岛酒店叫什么？",
+      "no_unsupported_answer": true,
+      "sources": 0,
+      "answer": "没有找到足够的记录依据。可以补充人物、时间或事情中的一个具体线索。"
+    },
+    {
+      "question": "还没发生的婚礼是哪一天？",
+      "no_unsupported_answer": true,
+      "sources": 0,
+      "answer": "没有找到足够的记录依据。可以补充人物、时间或事情中的一个具体线索。"
+    }
+  ],
+  "details": [
+    {
+      "case": 1,
+      "question": "那家川菜馆叫什么，在哪里？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "那家川菜馆叫蜀香川菜馆，位于青竹路18号。"
+    },
+    {
+      "case": 2,
+      "question": "备用钥匙放在哪里？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "备用钥匙放在玄关的蓝色抽屉里。"
+    },
+    {
+      "case": 3,
+      "question": "妈妈喜欢哪种桂花糕？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据记录，妈妈提到她喜欢无糖桂花糕。"
+    },
+    {
+      "case": 4,
+      "question": "小林推荐的咖啡店是哪家？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据资料，小林推荐的是春野咖啡，并说那里的燕麦拿铁很好喝。"
+    },
+    {
+      "case": 5,
+      "question": "为什么那天只走了三公里？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据你提供的日记记录（2026-09-03）：跑步时膝盖不舒服，所以那天只走了三公里，并准备先休息几天。"
+    },
+    {
+      "case": 6,
+      "question": "上次图片上传失败怎么解决的？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据提供的资料，你曾把图片上传请求的超时时间从5秒改为30秒，之后问题解决了。记录时间是2026-09-03T06:00:00+00:00。"
+    },
+    {
+      "case": 7,
+      "question": "为什么选星河民宿？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据资料，选择星河民宿的原因有两条：一是它离车站更近，而且可以免费取消（记录 e8b4bd5d-b851-4eb2-a316-9d146f023b80）；另一条记录提到之前选的星河民宿住下来很安静，步行到车站大约十分钟（记录 2c2b3ed8-ccee-4cd9-a66f-57008970b73e）。这两条记录时间接近但表述不同：前者是做出选择时的理由，后者是事后对住宿体验的描述；两者是否指同一次入住，资料中没有明确说明。"
+    },
+    {
+      "case": 8,
+      "question": "星河民宿住下来怎么样？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据资料，有一条记录提到星河民宿的入住体验：住下来很安静，步行到车站大约十分钟（record_id: 2c2b3ed8-ccee-4cd9-a66f-57008970b73e）。另一条记录说明了选择该民宿的原因：离车站更近，且可以免费取消（record_id: e8b4bd5d-b851-4eb2-a316-9d146f023b80），但这属于选择理由，不是实际入住评价。第三条记录（record_id: b86b7958-9cdf-44a3-bbcb-d018494a6878）与星河民宿无关。除上述安静和步行约十分钟外，资料未提供更多关于住宿质量、价格、服务等方面的信息。"
+    },
+    {
+      "case": 9,
+      "question": "山间来信里我最喜欢哪一章？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据记录，你最喜欢《山间来信》中作者写父亲修自行车的那一章。"
+    },
+    {
+      "case": 10,
+      "question": "之前保存的番茄工作法时间是怎么安排的？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据保存的摘录，番茄工作法的时间安排是：每次专注25分钟，休息5分钟。该内容来源为书中摘录（外部资料），并非你的个人记录。"
+    },
+    {
+      "case": 11,
+      "question": "姐姐搬家定在哪一天？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "姐姐的搬家安排在9月18日。"
+    },
+    {
+      "case": 12,
+      "question": "之前家庭旅行相册的灵感是什么？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据提供的资料，家庭旅行相册的灵感来源于整理照片时的想法：每次旅行挑十张照片并配一段话（record_id: fa6152a6-56f4-4c10-a203-ed114a037b73）。资料中未提供更多关于该灵感的其他说明。"
+    },
+    {
+      "case": 13,
+      "question": "那棵大的银杏树在公园哪里？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据提供的记录，那棵特别大的银杏树在晴川公园南门旁边。"
+    },
+    {
+      "case": 14,
+      "question": "冷冻面包复烤的温度是多少？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据提供的网页摘录，冷冻面包复烤的温度是160度，复烤时间为8分钟。"
+    },
+    {
+      "case": 15,
+      "question": "我答应什么时候把帐篷借给小周？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "你答应周五把帐篷借给小周。"
+    },
+    {
+      "case": 16,
+      "question": "上次发现日志泄露输入后做了什么？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据资料，2026-09-08 的记录提到：写代码时发现日志里打印了用户输入，已删除那行调试输出。"
+    },
+    {
+      "case": 17,
+      "question": "为什么那周改成地铁通勤？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据资料，该周改成地铁通勤的原因是：公交绕路，而且早高峰容易堵车（record_id: 8fa6e0cb-db8b-401e-90b0-366cfca871a9）。另有资料提到改乘地铁后，每天通勤时间从50分钟降到35分钟（record_id: 14ffae9f-8c9a-460d-80c1-63c42e614190），这属于时间变化的结果，未明确说明是改乘的动机。"
+    },
+    {
+      "case": 18,
+      "question": "地铁通勤后来节省了多少时间？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "据现有资料，改为地铁后每天通勤时间从50分钟降到35分钟，即每天节省15分钟。但资料未说明这一变化持续了多久、是否每天都发生，因此“后来总共节省了多少时间”无法从资料确定，属于未知。"
+    },
+    {
+      "case": 19,
+      "question": "远山跑鞋买的什么尺码？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "远山牌跑鞋买的尺码是42。"
+    },
+    {
+      "case": 20,
+      "question": "之前截图里的复习方法是什么？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "截图笔记中的复习方法是：复习时可以先闭上书尝试回忆，再检查遗漏，比反复重读更主动。"
+    },
+    {
+      "case": 21,
+      "question": "爷爷年轻时在哪里修钟表？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据资料记载，爷爷讲起他年轻时在桥东修钟表。"
+    },
+    {
+      "case": 22,
+      "question": "和阿晴约在哪里见面？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "资料显示，约在周日下午三点于白石书店见面。"
+    },
+    {
+      "case": 23,
+      "question": "放照片备份的移动硬盘在哪里？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据提供的资料，放照片备份的移动硬盘放在书桌右侧的盒子里。该记录时间为 2026-09-12。"
+    },
+    {
+      "case": 24,
+      "question": "上次数据库慢查询怎么处理的？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据提供的记录，上次处理数据库慢查询的方式是：给订单日期字段加索引，加索引后查询从两秒缩短到一百毫秒。该记录时间为 2026-09-12。除此之外的具体处理细节未在资料中说明。"
+    },
+    {
+      "case": 25,
+      "question": "为什么取消那次周末聚餐？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据记录 516e42d2-c9a1-4624-90b8-30dde45513c1，取消周末聚餐的原因是“这周太累，想在家休息”。记录 f1efc10f-7a91-4026-8221-66d49bf468f5 补充说明取消后睡了一个下午，晚上精神好了很多。其他两条记录（露营、民宿）与取消聚餐的原因无关。"
+    },
+    {
+      "case": 26,
+      "question": "取消聚餐后休息得怎么样？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据记录，你在2026-09-13决定取消周末聚餐，因为太累想在家休息；随后取消聚餐后睡了一个下午，晚上感觉精神好了很多。因此可以说休息后精神有所改善。"
+    },
+    {
+      "case": 27,
+      "question": "小许不吃什么？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据资料，小许不吃香菜。"
+    },
+    {
+      "case": 28,
+      "question": "保存过的咖啡粉水比例是什么？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "保存过的咖啡粉水比例是15克咖啡粉配240克水（先注水30克闷蒸30秒）。"
+    },
+    {
+      "case": 29,
+      "question": "白沙湾哪条步道比较安静？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据提供的资料，有一条记录提到白沙湾靠东边的步道比较安静。另一条记录提到的是星河民宿住下来很安静，与步道无关。"
+    },
+    {
+      "case": 30,
+      "question": "雨天音乐清单的想法是什么？",
+      "retrieval_top5": true,
+      "expected_detail_present": true,
+      "citations_valid": true,
+      "mode": "ai",
+      "answer": "根据记录 b86b7958-9cdf-44a3-bbcb-d018494a6878，雨天音乐清单的想法是：做一个雨天音乐清单，把每首歌和听歌时的心情一起记下来。"
+    }
+  ],
+  "limitations": "Expected-detail and source-coverage checks are automated proxies, not human factuality or real-user retention scores."
+}

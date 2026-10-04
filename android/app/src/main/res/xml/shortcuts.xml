@@ -1,0 +1,8 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut android:shortcutId="record" android:enabled="true" android:icon="@drawable/ic_diary" android:shortcutShortLabel="@string/record_shortcut">
+        <intent android:action="app.smartdiary.RECORD" android:targetPackage="app.smartdiary" android:targetClass="app.smartdiary.MainActivity" />
+    </shortcut>
+    <shortcut android:shortcutId="write" android:enabled="true" android:icon="@drawable/ic_diary" android:shortcutShortLabel="@string/text_shortcut">
+        <intent android:action="app.smartdiary.WRITE" android:targetPackage="app.smartdiary" android:targetClass="app.smartdiary.MainActivity" />
+    </shortcut>
+</shortcuts>

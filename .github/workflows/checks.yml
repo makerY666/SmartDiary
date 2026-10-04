@@ -1,0 +1,44 @@
+name: checks
+on: [push, pull_request]
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: diary
+          POSTGRES_PASSWORD: test-password-only
+          POSTGRES_DB: smartdiary_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U diary -d smartdiary_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r backend/requirements.lock && pip install --no-deps -e backend
+      - run: ruff check backend scripts --config backend/pyproject.toml && ruff format backend scripts --check --config backend/pyproject.toml
+      - run: pytest backend/tests -q
+      - run: alembic -c backend/alembic.ini upgrade head
+        env:
+          DATABASE_URL: postgresql+psycopg://diary:test-password-only@localhost:5432/smartdiary_test
+      - run: pytest backend/tests -q
+        env:
+          TEST_DATABASE_URL: postgresql+psycopg://diary:test-password-only@localhost:5432/smartdiary_test
+      - run: python scripts/smoke.py
+      - run: python backend/evaluation/run.py --output artifacts/baseline.json
+      - uses: actions/upload-artifact@v4
+        with: {name: baseline, path: artifacts/baseline.json}
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: "17"}
+      - uses: android-actions/setup-android@v3
+      - run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+      - run: chmod +x android/gradlew && cd android && ./gradlew :app:assembleDebug :app:assembleDebugAndroidTest :app:testDebugUnitTest :app:lintDebug --console=plain
+      - uses: actions/upload-artifact@v4
+        with: {name: smartdiary-debug-apk, path: android/app/build/outputs/apk/debug/app-debug.apk}

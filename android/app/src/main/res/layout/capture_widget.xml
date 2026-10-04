@@ -1,0 +1,4 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="horizontal" android:padding="8dp" android:background="#24584F">
+    <TextView android:id="@+id/voice" android:layout_width="0dp" android:layout_weight="1" android:layout_height="48dp" android:gravity="center" android:text="@string/record_shortcut" android:textColor="#FFFFFF" android:textSize="18sp" />
+    <TextView android:id="@+id/write" android:layout_width="0dp" android:layout_weight="1" android:layout_height="48dp" android:gravity="center" android:text="@string/text_shortcut" android:textColor="#FFFFFF" android:textSize="18sp" />
+</LinearLayout>
